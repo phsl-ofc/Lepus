@@ -329,7 +329,7 @@ def init(db, domain, regThreshold, regMaxRatio, regMaxLength, regDistLow, regDis
 						elif r not in new_rules:
 							pass
 
-	print("  \__ {0} {1}".format(colored("Rules generated:", "yellow"), colored(len(new_rules), "cyan")))
+	print("  \\__ {0} {1}".format(colored("Rules generated:", "yellow"), colored(len(new_rules), "cyan")))
 
 	chunkSize = 1000
 	if len(new_rules) <= chunkSize:
@@ -356,10 +356,10 @@ def init(db, domain, regThreshold, regMaxRatio, regMaxLength, regDistLow, regDis
 					leaveFlag = True
 
 				if numberOfChunks == 1:
-					completed = tqdm(completed, total=len(baseChunk), desc="  \__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
+					completed = tqdm(completed, total=len(baseChunk), desc="  \\__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
 
 				else:
-					completed = tqdm(completed, total=len(baseChunk), desc="  \__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
+					completed = tqdm(completed, total=len(baseChunk), desc="  \\__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
 
 				for task in completed:
 					try:

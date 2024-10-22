@@ -97,7 +97,7 @@ def init(db, domain, gptGive, gptReceive, gptConcurrent, gptLoop, hideWildcards,
 
 		try:
 			completed = as_completed(tasks)
-			completed = tqdm(completed, total=numberOfChunks, desc="  \__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=True)
+			completed = tqdm(completed, total=numberOfChunks, desc="  \\__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=True)
 
 			for task in completed:
 				result = task.result()

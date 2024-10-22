@@ -159,10 +159,10 @@ def init(db, domain, markovState, markovLength, markovQuantity, hideWildcards, h
 					leaveFlag = True
 
 				if numberOfChunks == 1:
-					completed = tqdm(completed, total=len(baseChunk), desc="  \__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
+					completed = tqdm(completed, total=len(baseChunk), desc="  \\__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
 
 				else:
-					completed = tqdm(completed, total=len(baseChunk), desc="  \__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
+					completed = tqdm(completed, total=len(baseChunk), desc="  \\__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
 
 				for task in completed:
 					result = task.result()

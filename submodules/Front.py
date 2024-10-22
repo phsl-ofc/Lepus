@@ -118,10 +118,10 @@ def massFront(targets, threads):
 					leaveFlag = True
 
 				if numberOfChunks == 1:
-					completed = tqdm(completed, total=len(targetChunk), desc="  \__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
+					completed = tqdm(completed, total=len(targetChunk), desc="  \\__ {0}".format(colored("Progress", "cyan")), dynamic_ncols=True, leave=leaveFlag)
 
 				else:
-					completed = tqdm(completed, total=len(targetChunk), desc="  \__ {0}".format(colored("Progress {0}/{1}".format(iteration, numberOfChunks), "cyan")), dynamic_ncols=True, leave=leaveFlag)
+					completed = tqdm(completed, total=len(targetChunk), desc="  \\__ {0}".format(colored("Progress {0}/{1}".format(iteration, numberOfChunks), "cyan")), dynamic_ncols=True, leave=leaveFlag)
 
 				for task in completed:
 					result = task.result()
@@ -198,11 +198,11 @@ def init(db, domain, old_fronts, hideFindings, threads):
 		else:
 			fronts.append((domain, row.provider, row.signature))
 
-	print("    \__ {0} {1}".format(colored("New frontable domains that were identified:", "yellow"), colored(len(fronts), "cyan")))
+	print("    \\__ {0} {1}".format(colored("New frontable domains that were identified:", "yellow"), colored(len(fronts), "cyan")))
 
 	if not hideFindings:
 		for front in fronts:
-			print("      \__ {0}: {1}, {2}".format(colored(front[0], "cyan"), colored(front[1], "yellow"), colored(front[2], "yellow")))
+			print("      \\__ {0}: {1}, {2}".format(colored(front[0], "cyan"), colored(front[1], "yellow"), colored(front[2], "yellow")))
 
 	if notify:
 		for front in fronts:
