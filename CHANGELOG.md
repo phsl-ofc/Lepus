@@ -1,3 +1,18 @@
+# Version 3.6.0
+
+### --- New Features
+1. New RapidDNS.io collector
+2. New SubdomainFinder.io collector
+3. New Prinsh.com collector
+4. New Secrash.com collector
+5. New Dnshistory.org collector
+6. Update ThreatCrowd collector
+
+### --- Bug Fixes
+1. Syntax error in new versions of Python
+2. CRT.SH Unstable
+3. Dossier website deactivated, captcha and blocking were added according to many requests
+
 # Version 3.5.0
 
 ### --- New Features

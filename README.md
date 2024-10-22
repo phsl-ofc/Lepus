@@ -1,7 +1,6 @@
 [![GitHub License](https://img.shields.io/badge/License-BSD%203--Clause-informational.svg)](https://github.com/GKNSB/Lepus/blob/master/LICENSE)
 [![GitHub Python](https://img.shields.io/badge/Python-%3E=%203.9.5-informational.svg)](https://www.python.org/)
-[![GitHub Version](https://img.shields.io/badge/Version-3.5.0-green.svg)](https://github.com/GKNSB/Lepus)
-<a href="https://www.buymeacoffee.com/gknsb"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer&emoji=🍺&slug=gknsb&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" align="right" style="height: 40px !important;width: 108 !important;"/></a>
+[![GitHub Version](https://img.shields.io/badge/Version-3.6.0-green.svg)](https://github.com/phsl-ofc/Lepus)
 
 <br></br>
 # Lepus
@@ -89,6 +88,11 @@ The Collectors mode collects subdomains from the following services:
 |[Webscout](https://webscout.io/)|No|
 |[WhoisXMLAPI](https://www.whoisxmlapi.com/)|Yes|
 |[ZoomEye](https://www.zoomeye.org/)|Yes|
+|[RapidDNS](https://rapiddns.io)|No|
+|[SubdomainFinder](https://subdomainfinder.io)|No|
+|[Prinsh](https://tools.prinsh.com)|No|
+|[Secrash](https://www.secrash.com)|No|
+|[Dnshistory](https://dnshistory.org)|No|
 
 You can add your API keys in the `config.ini` file.
 

@@ -23,7 +23,7 @@ import utilities.MiscHelpers
 import utilities.ScanHelpers
 
 simplefilter("ignore")
-version = "3.5.0"
+version = "3.6.0"
 
 
 def printBanner():
@@ -164,7 +164,7 @@ if __name__ == "__main__":
 					submodules.Regulator.init(db, args.domain, args.reg_threshold, args.reg_max_ration, args.reg_max_length, args.reg_dist_low, args.reg_dist_high, args.hideWildcards, args.excludeUnresolved, args.hideFindings, args.threads)
 				except MemoryError:
 					collect()
-					print("  \__", colored("MemoryError, module execution failed...", "red"))
+					print("  \\__", colored("MemoryError, module execution failed...", "red"))
 					
 			utilities.ScanHelpers.massRDAP(db, args.domain, args.hideFindings, args.threads)
 
