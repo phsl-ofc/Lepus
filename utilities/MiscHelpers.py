@@ -73,7 +73,7 @@ def loadOldFindings(db, domain):
 	for row in db.query(Front).filter(Front.domain == domain):
 		old_fronts.add(".".join([row.subdomain, domain]))
 
-	print("  \__ {0}: {1}".format(colored("Subdomains loaded", "cyan"), colored(len(old_resolved) + len(old_unresolved), "yellow")))
+	print("  \\__ {0}: {1}".format(colored("Subdomains loaded", "cyan"), colored(len(old_resolved) + len(old_unresolved), "yellow")))
 	return old_resolved, old_unresolved, old_takeovers, old_fronts
 
 
@@ -117,7 +117,7 @@ def loadWordlist(domain, wordlist):
 	WL = set([subdomain.strip().lower() for subdomain in wordlist.readlines()])
 	wordlist.close()
 
-	print("  \__ {0}: {1}".format(colored("Subdomains loaded", "cyan"), colored(len(WL), "yellow")))
+	print("  \\__ {0}: {1}".format(colored("Subdomains loaded", "cyan"), colored(len(WL), "yellow")))
 	return WL
 
 
@@ -288,10 +288,10 @@ def exportFindings(db, domain, old_resolved, interrupt):
 								new = False
 
 							if row1.subdomain == "":
-								diff.write("  \__ {0}: {1}\n".format(domain, ", ".join(diff_list)))
+								diff.write("  \\__ {0}: {1}\n".format(domain, ", ".join(diff_list)))
 
 							else:
-								diff.write("  \__ {0}.{1}: {2}\n".format(row1.subdomain, domain, ", ".join(diff_list)))
+								diff.write("  \\__ {0}.{1}: {2}\n".format(row1.subdomain, domain, ", ".join(diff_list)))
 
 						if ipv6:
 							if row1.subdomain == "":
@@ -366,4 +366,4 @@ def exportFindings(db, domain, old_resolved, interrupt):
 		if stat("{0}/{1}".format(path, exported_file)).st_size == 0:
 			remove("{0}/{1}".format(path, exported_file))
 
-	print("  \__ {0}!\n".format(colored("Done", "cyan")))
+	print("  \\__ {0}!\n".format(colored("Done", "cyan")))
