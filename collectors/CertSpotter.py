@@ -35,7 +35,7 @@ def init(domain):
 			response = requests.get(base_url + next_link, headers=headers)
 
 			if response.status_code == 429 and len(CS) == 0:
-				print("  \__", colored("Search rate limit exceeded.", "red"))
+				print("  \\__", colored("Search rate limit exceeded.", "red"))
 				return []
 
 			elif response.status_code == 429 and len(CS) > 0:
@@ -50,26 +50,26 @@ def init(domain):
 				break
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []
 
 	CS = set(CS)
 
-	print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(CS), "yellow")))
+	print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(CS), "yellow")))
 	return CS

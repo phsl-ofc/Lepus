@@ -23,7 +23,7 @@ def init(domain):
 	SECRET = parser.get("Censys", "CENSYS_SECRET")
 
 	if UID == "" or SECRET == "":
-		print("  \__", colored("No Censys API credentials configured", "red"))
+		print("  \\__", colored("No Censys API credentials configured", "red"))
 		return []
 
 	else:
@@ -36,7 +36,7 @@ def init(domain):
 			res = requests.post(API_URL + "/certificates/search", json=payload, auth=(UID, SECRET))
 
 			if res.status_code == 403:
-				print("  \__", colored("You have used your full quota for this billing period.", "red"))
+				print("  \\__", colored("You have used your full quota for this billing period.", "red"))
 				return C
 
 			C = findall("CN=([\w\d][\w\d\-\.]*\.{0})".format(domain.replace(".", "\.")), str(res.content))
@@ -49,23 +49,23 @@ def init(domain):
 
 				if res.status_code != 200:
 					if loads(res.text)["error_type"] == "max_results":
-						print("  \__", colored("Search result limit reached.", "red"))
+						print("  \\__", colored("Search result limit reached.", "red"))
 						break
 
 					elif loads(res.text)["error_type"] == "quota_exceeded":
-						print("  \__", colored("Quota exceeded.", "red"))
+						print("  \\__", colored("Quota exceeded.", "red"))
 						break
 
 					elif loads(res.text)["error_type"] == "rate_limit_exceeded":
-						print("  \__", colored("Rate-limit exceeded.", "red"))
+						print("  \\__", colored("Rate-limit exceeded.", "red"))
 						break
 					
 					elif res.status_code == 403 and "You have used your full quota for this billing period." in res.text:
-						print("  \__", colored("You have used your full quota for this billing period.", "red"))
+						print("  \\__", colored("You have used your full quota for this billing period.", "red"))
 						break
 
 					else:
-						print("  \__ {0} {1} {2}".format(colored("An error occured on page", "red"), colored("{0}:".format(page), "red"), colored(loads(res.text)["error_type"], "red")))
+						print("  \\__ {0} {1} {2}".format(colored("An error occured on page", "red"), colored("{0}:".format(page), "red"), colored(loads(res.text)["error_type"], "red")))
 
 				else:
 					tempC = findall("CN=([\w\d][\w\d\-\.]*\.{0})".format(domain.replace(".", "\.")), str(res.content))
@@ -76,29 +76,29 @@ def init(domain):
 
 			C = set(C)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(C), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(C), "yellow")))
 			return C
 
 		except KeyError as errk:
-			print("  \__", colored(errk, "red"))
+			print("  \\__", colored(errk, "red"))
 			return []
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []

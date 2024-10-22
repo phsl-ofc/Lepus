@@ -14,7 +14,7 @@ def init(domain):
 	C99_API_KEY = parser.get("C99", "C99_API_KEY")
 
 	if C99_API_KEY == "":
-		print("  \__", colored("No C99 API key configured", "red"))
+		print("  \\__", colored("No C99 API key configured", "red"))
 		return []
 
 	else:
@@ -29,25 +29,25 @@ def init(domain):
 				C99.extend(results)
 				C99 = set(C99)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(C99), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(C99), "yellow")))
 			return C99
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 		
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []
