@@ -3,6 +3,7 @@ from datetime import datetime
 from termcolor import colored
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import FlushError
+from sqlalchemy import text
 from ipaddress import ip_address, ip_network
 from os import makedirs, listdir, stat, remove
 from utilities.DatabaseHelpers import Record, Wildcard, Resolution, Unresolved, ASN, Network, OpenPort, URL, Takeover, Front
@@ -108,7 +109,7 @@ def purgeOldFindings(db, domain):
 	db.query(Record).filter(Record.domain == domain).delete()
 	db.commit()
 
-	db.execute("VACUUM;")
+	db.execute(text("VACUUM;"))
 
 
 def loadWordlist(domain, wordlist):
