@@ -17,7 +17,7 @@ def init(domain):
 	api = shodan.Shodan(SHODAN_API_KEY)
 
 	if SHODAN_API_KEY == "":
-		print("  \__", colored("No Shodan API key configured", "red"))
+		print("  \\__", colored("No Shodan API key configured", "red"))
 		return []
 
 	else:
@@ -38,33 +38,33 @@ def init(domain):
 
 			SD = set(SD)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(SD), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(SD), "yellow")))
 			return SD
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return SD
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return SD
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return SD
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return SD
 
 		except KeyError as errk:
-			print("  \__", colored(errk, "red"))
+			print("  \\__", colored(errk, "red"))
 			return SD
 
 		except shodan.exception.APIError as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return SD
 
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return SD

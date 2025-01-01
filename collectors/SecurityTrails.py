@@ -15,7 +15,7 @@ def init(domain):
 	SECURITYTRAILS_API_KEY = parser.get("SecurityTrails", "SECURITYTRAILS_API_KEY")
 
 	if SECURITYTRAILS_API_KEY == "":
-		print("  \__", colored("No SecurityTrails API key configured", "red"))
+		print("  \\__", colored("No SecurityTrails API key configured", "red"))
 		return []
 
 	else:
@@ -26,7 +26,7 @@ def init(domain):
 			response = requests.get(url, headers=headers)
 
 			if response.status_code == 429:
-				print("  \__", colored("You've exceeded the usage limits for your account.", "red"))
+				print("  \\__", colored("You've exceeded the usage limits for your account.", "red"))
 				return []
 
 			results = loads(response.text)["subdomains"]
@@ -36,25 +36,25 @@ def init(domain):
 					ST.append("{0}.{1}".format(result, domain))
 				ST = set(ST)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(ST), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(ST), "yellow")))
 			return ST
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 		
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []

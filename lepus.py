@@ -23,7 +23,7 @@ import utilities.MiscHelpers
 import utilities.ScanHelpers
 
 simplefilter("ignore")
-version = "3.6.0"
+version = "3.6.1"
 
 
 def printBanner():

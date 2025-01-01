@@ -19,7 +19,7 @@ def init(domain):
 	REDHUNTLABS_API_KEY = parser.get("RedhuntLabs", "REDHUNTLABS_API_KEY")
 
 	if REDHUNTLABS_API_KEY == "":
-		print("  \__", colored("No Redhunt Labs API key configured", "red"))
+		print("  \\__", colored("No Redhunt Labs API key configured", "red"))
 		return []
 
 	else:
@@ -53,31 +53,31 @@ def init(domain):
 					error_message = response.json()['message']
 
 					if "limit has been reached" in error_message:
-						print("  \__", colored("Your API credits have been exhausted.", "red"))
+						print("  \\__", colored("Your API credits have been exhausted.", "red"))
 					
 					return set(RHL)
 			
 			RHL = set(RHL)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(RHL), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(RHL), "yellow")))
 			return RHL
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return RHL
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return RHL
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return RHL
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return RHL
 		
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return RHL

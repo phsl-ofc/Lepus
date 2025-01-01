@@ -16,7 +16,7 @@ def init(domain):
 	RIDDLER_PASSWORD = parser.get("Riddler", "RIDDLER_PASSWORD")
 
 	if RIDDLER_USERNAME == "" or RIDDLER_PASSWORD == "":
-		print("  \__", colored("No Riddler API credentials configured", "red"))
+		print("  \\__", colored("No Riddler API credentials configured", "red"))
 		return []
 
 	else:
@@ -37,7 +37,7 @@ def init(domain):
 				search_response = requests.post(search_url, json=search, headers=headers)
 
 				if search_response.status_code == 500:
-					print("  \__", colored("Internal Server Error.", "red"))
+					print("  \\__", colored("Internal Server Error.", "red"))
 					return riddler
 
 				else:
@@ -48,35 +48,35 @@ def init(domain):
 
 				riddler = set(riddler)
 
-				print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(riddler), "yellow")))
+				print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(riddler), "yellow")))
 				return riddler
 
 			else:
-				print("  \__", colored("Invalid Riddler API credentials.", "red"))
+				print("  \\__", colored("Invalid Riddler API credentials.", "red"))
 				return []
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 
 		except ValueError as errv:
-			print("  \__", colored(errv, "red"))
+			print("  \\__", colored(errv, "red"))
 			return []
 
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []
 
 #Depricated?

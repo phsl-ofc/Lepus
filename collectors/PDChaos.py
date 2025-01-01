@@ -14,7 +14,7 @@ def init(domain):
 	CHAOS_KEY = parser.get("PDChaos", "CHAOS_API_KEY")
 
 	if CHAOS_KEY == "":
-		print("  \__", colored("No Project Discovery Chaos API key configured", "red"))
+		print("  \\__", colored("No Project Discovery Chaos API key configured", "red"))
 		return []
 
 	headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0", "Authorization": CHAOS_KEY}
@@ -30,25 +30,25 @@ def init(domain):
 
 		PDCH = set(PDCH)
 
-		print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(PDCH), "yellow")))
+		print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(PDCH), "yellow")))
 		return PDCH
 
 	except requests.exceptions.RequestException as err:
-		print("  \__", colored(err, "red"))
+		print("  \\__", colored(err, "red"))
 		return []
 
 	except requests.exceptions.HTTPError as errh:
-		print("  \__", colored(errh, "red"))
+		print("  \\__", colored(errh, "red"))
 		return []
 
 	except requests.exceptions.ConnectionError as errc:
-		print("  \__", colored(errc, "red"))
+		print("  \\__", colored(errc, "red"))
 		return []
 
 	except requests.exceptions.Timeout as errt:
-		print("  \__", colored(errt, "red"))
+		print("  \\__", colored(errt, "red"))
 		return []
 
 	except Exception:
-		print("  \__", colored("Something went wrong!", "red"))
+		print("  \\__", colored("Something went wrong!", "red"))
 		return []

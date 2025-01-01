@@ -93,10 +93,24 @@ The Collectors mode collects subdomains from the following services:
 |[Prinsh](https://tools.prinsh.com)|No|
 |[Secrash](https://www.secrash.com)|No|
 |[Dnshistory](https://dnshistory.org)|No|
+|[Site-analyzer.pro](https://site-analyzer.pro)|No|
+|[Lookup.tools](https://lookup.tools)|No|
+|[Datalabs.net](Datalabs.net/tools/subdomainfinder)|No|
+|[Digger.tools](https://digger.tools)|No|
 
 You can add your API keys in the `config.ini` file.
 
 The Collectors module will run by default on lepus. If you do not want to use the collectors during a lepus run (so that you don't exhaust your API key limits), you can use the `-nc` or `--no-collectors` argument.
+
+### Proxy
+Some services work with proxy server and can help limit requests. To configure, just go to the `config.ini` file and configure the data. It can be fixed or rotating, with or without username and password.
+
+### Brute Force Wordlist
+Now it is possible to use wordlist and add to the database only those that are actually online, to do this simply configure the size you want, thread and timeout in `config.ini`, for more information on the size of the list simply access this repository:
+
+```
+https://github.com/n0kovo/n0kovo_subdomains
+```
 
 ### Dictionary
 The dictionary mode can be used when you want to provide lepus a list of subdomains. You can use the `-w` or `--wordlist` argument followed by the file. A custom list comes with lepus located at `lists/subdomains.txt`. An example run would be:

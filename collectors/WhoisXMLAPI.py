@@ -14,7 +14,7 @@ def init(domain):
 	WHOISXML_API_KEY = parser.get("WhoisXMLAPI", "WHOISXML_API_KEY")
 
 	if WHOISXML_API_KEY == "":
-		print("  \__", colored("No WhoisXML API key configured", "red"))
+		print("  \\__", colored("No WhoisXML API key configured", "red"))
 		return []
 
 	else:
@@ -26,11 +26,11 @@ def init(domain):
 			response = requests.get(url, headers=headers, params=params)
 
 			if response.status_code == 402:
-				print("  \__", colored("Insufficient API queries account balance.", "red"))
+				print("  \\__", colored("Insufficient API queries account balance.", "red"))
 				return []
 			
 			if response.status_code == 429:
-				print("  \__", colored("Too Many Requests. Try your call again later.", "red"))
+				print("  \\__", colored("Too Many Requests. Try your call again later.", "red"))
 				return []
 
 			results = findall("([\w\d][\w\d\-\.]*\.{0})".format(domain.replace(".", "\.")), response.text)
@@ -39,25 +39,25 @@ def init(domain):
 				WXA.extend(results)
 				WXA = set(WXA)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(WXA), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(WXA), "yellow")))
 			return WXA
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 		
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []

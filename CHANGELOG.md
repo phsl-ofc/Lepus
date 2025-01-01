@@ -1,3 +1,19 @@
+# Version 3.6.1
+
+### --- New Features
+1. Added optional proxy support for services that do not block proxy servers
+2. New Site-analyzer.pro collector
+3. New Lookup.tools collector
+4. New Datalabs.net collector
+5. New Digger.tools collector
+6. New brute subdomain finder collector using wordlist (optional, active subdomains only)
+
+### --- Bug Fixes and Removed functions
+1. ColumbusElmasy website deactivated
+2. Syntax problems in the database
+3. Function update for new version of SQLAlchemy
+4. DNSDumpster updated to new version
+
 # Version 3.6.0
 
 ### --- New Features

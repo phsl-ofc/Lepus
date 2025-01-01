@@ -16,7 +16,7 @@ def init(domain):
 	URLSCAN_API_KEY = parser.get("URLScan", "URLSCAN_API_KEY")
 
 	if URLSCAN_API_KEY == "":
-		print("  \__", colored("No URLScan API key configured", "red"))
+		print("  \\__", colored("No URLScan API key configured", "red"))
 		return []
 
 	else:
@@ -36,7 +36,7 @@ def init(domain):
 				jsonResponse = loads(response.text)
 
 				if response.status_code != 200:
-					print("  \__", colored(jsonResponse["message"], "red"))
+					print("  \\__", colored(jsonResponse["message"], "red"))
 					return US
 				
 				results = findall("([\w\d][\w\d\-\.]*\.{0})".format(domain.replace(".", "\.")), response.text)
@@ -54,25 +54,25 @@ def init(domain):
 
 			US = set(US)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(US), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(US), "yellow")))
 			return US
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return US
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return US
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return US
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return US
 		
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return US

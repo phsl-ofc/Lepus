@@ -15,7 +15,7 @@ def init(domain):
 	ZOOMEYE_API_KEY = parser.get("ZoomEye", "ZOOMEYE_API_KEY")
 
 	if ZOOMEYE_API_KEY == "":
-		print("  \__", colored("No ZoomEye API key configured", "red"))
+		print("  \\__", colored("No ZoomEye API key configured", "red"))
 		return []
 
 	headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0", "API-KEY": ZOOMEYE_API_KEY}
@@ -41,25 +41,25 @@ def init(domain):
 
 		ZOOM = set(ZOOM)
 
-		print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(ZOOM), "yellow")))
+		print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(ZOOM), "yellow")))
 		return ZOOM
 
 	except requests.exceptions.RequestException as err:
-		print("  \__", colored(err, "red"))
+		print("  \\__", colored(err, "red"))
 		return []
 
 	except requests.exceptions.HTTPError as errh:
-		print("  \__", colored(errh, "red"))
+		print("  \\__", colored(errh, "red"))
 		return []
 
 	except requests.exceptions.ConnectionError as errc:
-		print("  \__", colored(errc, "red"))
+		print("  \\__", colored(errc, "red"))
 		return []
 
 	except requests.exceptions.Timeout as errt:
-		print("  \__", colored(errt, "red"))
+		print("  \\__", colored(errt, "red"))
 		return []
 
 	except Exception:
-		print("  \__", colored("Something went wrong!", "red"))
+		print("  \\__", colored("Something went wrong!", "red"))
 		return []

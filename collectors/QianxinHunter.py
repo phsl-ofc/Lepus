@@ -20,7 +20,7 @@ def init(domain):
 	QIANXIN_API_KEY = parser.get("QianxinHunter", "QIANXIN_API_KEY")
 
 	if QIANXIN_API_KEY == "":
-		print("  \__", colored("No Qianxin Hunter API key configured", "red"))
+		print("  \\__", colored("No Qianxin Hunter API key configured", "red"))
 		return []
 
 	else:
@@ -38,7 +38,7 @@ def init(domain):
 				results = findall("([\w\d][\w\d\-\.]*\.{0})".format(domain.replace(".", "\.")), response.text)
 
 				if loads(response.text)["code"] == 40204:
-					print("  \__", colored("Quota exceeded!", "red"))
+					print("  \\__", colored("Quota exceeded!", "red"))
 					break
 
 				maxPages = int(loads(response.text)["data"]["total"] / perPage) + 1
@@ -52,25 +52,25 @@ def init(domain):
 			
 			QH = set(QH)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(QH), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(QH), "yellow")))
 			return QH
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return QH
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return QH
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return QH
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return QH
 		
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return QH

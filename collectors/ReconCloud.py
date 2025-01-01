@@ -30,27 +30,27 @@ def init(domain):
 
 			sleep(10)
 
-		print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(RC), "yellow")))
+		print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(RC), "yellow")))
 		return RC
 
 	except requests.exceptions.RequestException as err:
-		print("  \__", colored(err, "red"))
+		print("  \\__", colored(err, "red"))
 		return RC
 
 	except requests.exceptions.HTTPError as errh:
-		print("  \__", colored(errh, "red"))
+		print("  \\__", colored(errh, "red"))
 		return RC
 
 	except requests.exceptions.ConnectionError as errc:
-		print("  \__", colored(errc, "red"))
+		print("  \\__", colored(errc, "red"))
 		return RC
 
 	except requests.exceptions.Timeout as errt:
-		print("  \__", colored(errt, "red"))
+		print("  \\__", colored(errt, "red"))
 		return RC
 
 	except Exception:
-		print("  \__", colored("Something went wrong!", "red"))
+		print("  \\__", colored("Something went wrong!", "red"))
 		return RC
 
 #Depricated?

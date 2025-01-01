@@ -2,6 +2,7 @@ import requests
 from urllib.parse import quote
 from termcolor import colored
 from bs4 import BeautifulSoup
+from configparser import RawConfigParser
 
 def init(domain):
     SUBFINDER = []

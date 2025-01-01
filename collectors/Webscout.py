@@ -45,30 +45,30 @@ def init(domain):
 				waitCounter += 1
 
 		else:
-			print("  \__", colored("Message: {0}".format(loads(creationResponse.text)["message"]), "red"))
+			print("  \\__", colored("Message: {0}".format(loads(creationResponse.text)["message"]), "red"))
 			return WS
 
 		WS = set(WS)
 
-		print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(WS), "yellow")))
+		print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(WS), "yellow")))
 		return WS
 
 	except requests.exceptions.RequestException as err:
-		print("  \__", colored(err, "red"))
+		print("  \\__", colored(err, "red"))
 		return []
 
 	except requests.exceptions.HTTPError as errh:
-		print("  \__", colored(errh, "red"))
+		print("  \\__", colored(errh, "red"))
 		return []
 
 	except requests.exceptions.ConnectionError as errc:
-		print("  \__", colored(errc, "red"))
+		print("  \\__", colored(errc, "red"))
 		return []
 
 	except requests.exceptions.Timeout as errt:
-		print("  \__", colored(errt, "red"))
+		print("  \\__", colored(errt, "red"))
 		return []
 	
 	except Exception:
-		print("  \__", colored("Something went wrong!", "red"))
+		print("  \\__", colored("Something went wrong!", "red"))
 		return []

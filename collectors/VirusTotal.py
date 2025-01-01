@@ -13,7 +13,7 @@ def init(domain):
 	VT_API_KEY = parser.get("VirusTotal", "VT_API_KEY")
 
 	if VT_API_KEY == "":
-		print("  \__", colored("No VirusTotal API key configured", "red"))
+		print("  \\__", colored("No VirusTotal API key configured", "red"))
 		return []
 
 	else:
@@ -30,25 +30,25 @@ def init(domain):
 
 			VT = set(VT)
 
-			print("  \__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(VT), "yellow")))
+			print("  \\__ {0}: {1}".format(colored("Subdomains found", "cyan"), colored(len(VT), "yellow")))
 			return VT
 
 		except requests.exceptions.RequestException as err:
-			print("  \__", colored(err, "red"))
+			print("  \\__", colored(err, "red"))
 			return []
 
 		except requests.exceptions.HTTPError as errh:
-			print("  \__", colored(errh, "red"))
+			print("  \\__", colored(errh, "red"))
 			return []
 
 		except requests.exceptions.ConnectionError as errc:
-			print("  \__", colored(errc, "red"))
+			print("  \\__", colored(errc, "red"))
 			return []
 
 		except requests.exceptions.Timeout as errt:
-			print("  \__", colored(errt, "red"))
+			print("  \\__", colored(errt, "red"))
 			return []
 
 		except Exception:
-			print("  \__", colored("Something went wrong!", "red"))
+			print("  \\__", colored("Something went wrong!", "red"))
 			return []

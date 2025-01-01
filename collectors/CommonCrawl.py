@@ -3,9 +3,24 @@ import datetime
 from re import findall
 from json import loads
 from termcolor import colored
+from configparser import RawConfigParser
 
 
 def init(domain):
+	parser = RawConfigParser()
+	parser.read("config.ini")
+	proxy_status = parser.get('ProxyServer', 'PROXY_STATUS')
+	proxy_server = parser.get('ProxyServer', 'PROXY_SERVER')
+	proxy_port = parser.get('ProxyServer', 'PROXY_PORT')
+	proxy_user = parser.get('ProxyServer', 'PROXY_USER')
+	proxy_password = parser.get('ProxyServer', 'PROXY_PASSWORD')
+
+	if proxy_status:
+		if proxy_user and proxy_password:
+			proxy_url = f"http://{proxy_user}:{proxy_password}@{proxy_server}:{proxy_port}"
+		else:
+			proxy_url = f"http://{proxy_server}:{proxy_port}"
+	proxies = {"http": proxy_url, "https": proxy_url}
 	CC = []
 
 	print(colored("[*]-Searching CommonCrawl...", "yellow"))
@@ -15,7 +30,10 @@ def init(domain):
 	currentYear = datetime.date.today().strftime("%Y")
 
 	try:
-		indexResponse = requests.get(indexUrl, headers=headers)
+		if proxy_status:
+			indexResponse = requests.get(indexUrl, headers=headers, proxies=proxies)
+		else:
+			indexResponse = requests.get(indexUrl, headers=headers)
 		items = loads(indexResponse.text)
 
 		for aYear in range(int(currentYear)-1, int(currentYear)+1):
